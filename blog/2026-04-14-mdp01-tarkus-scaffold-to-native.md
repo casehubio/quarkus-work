@@ -1,11 +1,11 @@
 ---
 layout: post
-title: "Building Tarkus: From Scaffold to Native in One Session"
+title: "Building  WorkItems.From Scaffold to Native in One Session"
 date: 2026-04-14
 type: phase-update
 entry_type: note
 subtype: diary
-projects: [quarkus-tarkus]
+projects: [quarkus-workitems]
 tags: [quarkus, tdd, native-image, workflow, human-tasks]
 ---
 
@@ -17,7 +17,7 @@ Six phases shipped. Two are waiting on upstream projects that aren't finished.
 
 Before touching code I sent a separate Claude to research WS-HumanTask, BPMN 2.0 UserTask, CMMN, Camunda 8, and Flowable. What came back was useful in ways I hadn't expected.
 
-The CNCF Serverless Workflow spec has no concept of a human task — no proposal, no planned extension, nothing. That confirmed Tarkus needs to define this space independently.
+The CNCF Serverless Workflow spec has no concept of a human task — no proposal, no planned extension, nothing. That confirmed WorkItems needs to define this space independently.
 
 WS-HumanTask surfaced things I'd missed: the `owner` vs `assignee` distinction (who delegated vs who has it now), separate claim and completion deadlines, candidate groups for work-queue routing, and a `followUpDate` field distinct from the due date. We pulled all of it in. The WorkItem model grew to 27 fields before a single line of implementation was written.
 

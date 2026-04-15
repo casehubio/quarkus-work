@@ -5,7 +5,7 @@ date: 2026-04-15
 type: phase-update
 entry_type: note
 subtype: diary
-projects: [quarkus-tarkus]
+projects: [quarkus-workitems]
 tags: [ledger, examples, eigentrust, actortype, tdd]
 ---
 
@@ -21,7 +21,7 @@ Before writing code, we audited the full capability surface — command/event se
 
 **AI content moderation** — agent/human hybrid. A mock classifier flags a post as hate speech and creates a WorkItem using `agent:content-ai` as the actor ID. That `agent:` prefix is enough: `LedgerEventCapture` derives `actorType=AGENT` automatically. The classifier's confidence score and model version land in the `evidence` field. A human moderator reviews and overrides the flag with a rationale. A compliance bot — also an agent — attests that the override is sound. The ledger chain reads: AGENT creates → HUMAN resolves → AGENT attests.
 
-**Document review queue** — work queues and reputation. Three WorkItems posted to `candidateGroups=["doc-reviewers"]` with no direct assignee. Reviewers pull from the inbox. One claims a WorkItem and releases it; another picks it up and completes all three. `TrustScoreJob.runComputation()` materialises EigenTrust scores from the accumulated history — the reviewer who completed consistently scores higher. Queryable via `GET /tarkus/actors/{actorId}/trust`.
+**Document review queue** — work queues and reputation. Three WorkItems posted to `candidateGroups=["doc-reviewers"]` with no direct assignee. Reviewers pull from the inbox. One claims a WorkItem and releases it; another picks it up and completes all three. `TrustScoreJob.runComputation()` materialises EigenTrust scores from the accumulated history — the reviewer who completed consistently scores higher. Queryable via `GET /workitems/actors/{actorId}/trust`.
 
 Each scenario runs in one call — `POST /examples/{name}/run` — logs a narrative to stdout, and returns the full ledger trail as JSON.
 

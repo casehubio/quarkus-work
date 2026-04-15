@@ -1,22 +1,22 @@
-# Quarkus Tarkus — Session Handover
+# Quarkus WorkItems — Session Handover
 **Date:** 2026-04-15
 
 ## Project Status
 
-All phases complete. `quarkus-tarkus-examples` module added and fully passing. 0 open actionable issues.
+All phases complete. `quarkus-workitems-examples` module added and fully passing. 0 open actionable issues.
 
 | Module | Tests |
 |---|---|
 | runtime | passing |
-| tarkus-flow | 32 |
-| quarkus-tarkus-ledger | 74 (↑10 this session) |
-| quarkus-tarkus-examples | 4 |
+| workitems-flow | 32 |
+| quarkus-workitems-ledger | 74 (↑10 this session) |
+| quarkus-workitems-examples | 4 |
 | testing | 16 |
 | integration-tests | 19 (native) |
 
 ## What Changed This Session
 
-**New: `quarkus-tarkus-examples`** — four runnable scenario endpoints, each covering a distinct set of ledger/audit capabilities. Run via `POST /examples/{name}/run`. All 4 `@QuarkusTest` scenarios pass.
+**New: `quarkus-workitems-examples`** — four runnable scenario endpoints, each covering a distinct set of ledger/audit capabilities. Run via `POST /examples/{name}/run`. All 4 `@QuarkusTest` scenarios pass.
 
 **Two upstream prerequisites added:**
 - `WorkItemService.complete(+rationale, +planRef)` and `reject(+rationale)` overloads — pass through the lifecycle event for ledger capture
@@ -33,7 +33,7 @@ All phases complete. `quarkus-tarkus-examples` module added and fully passing. 0
 ## Immediate Next Step
 
 No immediate next step — project is in a clean state. Candidates:
-- `tarkus-flow/` needs a README (started end of session — see below)
+- `workitems-flow/` needs a README (started end of session — see below)
 - Issue #39 — ProvenanceLink PROV-O graph (blocked: CaseHub and Qhorus not ready)
 - Quarkiverse submission (mdproctor → quarkiverse org)
 
@@ -45,7 +45,7 @@ No immediate next step — project is in a clean state. Candidates:
 
 | What | Path |
 |---|---|
-| Examples README | `quarkus-tarkus-examples/README.md` |
+| Examples README | `quarkus-workitems-examples/README.md` |
 | Design spec | `docs/specs/2026-04-14-tarkus-design.md` |
 | Ledger design | `docs/specs/ledger-design.md` |
 | Blog (this session) | `blog/2026-04-15-mdp02-examples-that-prove-it.md` |
