@@ -8,6 +8,7 @@ All planned phases complete. 321+ tests passing across all modules. 1 open issue
 | Module | Tests |
 |---|---|
 | runtime | 222 |
+| quarkus-workitems-persistence-mongodb | 27 |
 | workitems-flow | 32 |
 | quarkus-workitems-ledger | 74 |
 | quarkus-workitems-queues | 50 |
@@ -17,6 +18,20 @@ All planned phases complete. 321+ tests passing across all modules. 1 open issue
 | quarkus-workitems-flow-examples | 2 |
 | testing | 16 |
 | integration-tests | 19 (native) |
+
+## What Was Built (this session)
+
+**MongoDB backend (`quarkus-workitems-persistence-mongodb`, #70):**
+- `MongoWorkItemDocument` + `MongoAuditEntryDocument` — Panache MongoDB entities
+- `MongoWorkItemStore` + `MongoAuditEntryStore` — `@Alternative @Priority(1)`
+- `WorkItemQuery` translated to MongoDB `Document` filters; `$regex` for label patterns
+- `candidateGroups`/`candidateUsers` stored as arrays for efficient `$in` queries
+- 27 `@QuarkusTest` tests via Quarkus Dev Services (Testcontainers MongoDB)
+
+**ORG/TEAM/PERSONAL vocabulary scopes (#69):**
+- Scoped vocabularies found-or-created on demand from `ownerId` in request
+- PERSONAL defaults `ownerId` to `addedBy`; ORG/TEAM require explicit `ownerId`
+- 6 new tests (runtime: 222 total)
 
 ## What Was Built (recent sessions)
 
@@ -45,9 +60,7 @@ All planned phases complete. 321+ tests passing across all modules. 1 open issue
 
 ## Immediate Next Step
 
-**MongoDB backend** (`quarkus-workitems-persistence-mongodb`) — `WorkItemStore` + `WorkItemQuery` are now backend-agnostic; this is the first real test of the SPI redesign.
-
-*(Completed this session: ORG/TEAM/PERSONAL vocabulary scopes — #69)*
+**Redis backend** (`quarkus-workitems-persistence-redis`) — second alternative store, follows the same SPI pattern as the MongoDB module.
 
 ## Open Issues
 
