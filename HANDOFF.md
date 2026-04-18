@@ -7,7 +7,7 @@ All planned phases complete. 321+ tests passing across all modules. 1 open issue
 
 | Module | Tests |
 |---|---|
-| runtime | 217 |
+| runtime | 222 |
 | workitems-flow | 32 |
 | quarkus-workitems-ledger | 74 |
 | quarkus-workitems-queues | 50 |
@@ -47,13 +47,15 @@ All planned phases complete. 321+ tests passing across all modules. 1 open issue
 
 **MongoDB backend** (`quarkus-workitems-persistence-mongodb`) — `WorkItemStore` + `WorkItemQuery` are now backend-agnostic; this is the first real test of the SPI redesign.
 
+*(Completed this session: ORG/TEAM/PERSONAL vocabulary scopes — #69)*
+
 ## Open Issues
 
 - #39 — ProvenanceLink PROV-O graph (blocked: CaseHub and Qhorus not ready)
 
 ## Remaining Deferred
 
-- Non-GLOBAL vocabulary scopes — `POST /vocabulary/ORG|TEAM|PERSONAL` returns 501 (needs auth context)
+*(none)*
 
 ## References
 
