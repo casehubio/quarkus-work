@@ -23,12 +23,21 @@
 
 ## Immediate Next Step
 
-**Epic #100 — next AI-native feature.** Three remain:
-1. Semantic skill matching — capability-aware routing via `WorkerRegistry` with real capability data
-2. AI-suggested resolution — `GET /workitems/{id}/resolution-suggestion` with LangChain4j (provider-agnostic)
-3. Automated escalation summarisation — hook into `ExpiryCleanupJob` on EXPIRED transition
+**Architectural brainstorm: `quarkus-work` foundational module.**
 
-Start a brainstorm for semantic skill matching — check existing epic #100 issue on GitHub for any more detail, then design and implement.
+The insight: `quarkus-workitems-api` is already a shared contract layer. We should design a
+`quarkus-work-core` (or `quarkus-work`) module — a shared *implementation* layer containing
+`WorkItemAssignmentService`, strategies, `WorkerRegistry`, and eventually the semantic embedding
+SPI — usable by both WorkItems (human inbox) and CaseHub's TaskBroker (automated routing).
+
+This reframes WorkItems from "human task inbox" to "foundational work management layer". If enough
+migrates down, the project splits cleanly into `quarkus-work` (generic work substrate) and
+`quarkus-workitems` (human inbox on top). We design our side regardless; CaseHub can align later.
+Merge the module back if it turns out too thin.
+
+Start with brainstorming this separation — evaluate all existing modules for what belongs at the
+foundational `quarkus-work` level vs. what is WorkItems-specific. After the design is settled,
+continue Epic #100 AI-native features (semantic matching, resolution suggestion, escalation summarisation).
 
 ## Priority Roadmap
 
