@@ -10,3 +10,4 @@
 | [2026-04-22-mdp01-substrate-and-what-grows.md](2026-04-22-mdp01-substrate-and-what-grows.md) | 2026-04-22 | Extracting quarkus-work-api/core as a generic work substrate; semantic skill matching with LangChain4j |
 | [2026-04-24-mdp01-primitive-and-orchestrator.md](2026-04-24-mdp01-primitive-and-orchestrator.md) | 2026-04-24 | Why subprocess spawning belongs in CaseHub, not quarkus-work — and what happens when AI agents lose cross-project context |
 | [2026-04-27-mdp01-slas-signals-connectors.md](2026-04-27-mdp01-slas-signals-connectors.md) | 2026-04-27 | Business-hours SLA, notifications module, and casehub-connectors as a standalone reusable connector library |
+| [2026-04-28-mdp01-optional-reports-postgres-truth.md](2026-04-28-mdp01-optional-reports-postgres-truth.md) | 2026-04-28 | Optional SLA reporting module; how Quarkus augmentation time bites when you try to switch databases in tests |
