@@ -11,3 +11,4 @@
 | [2026-04-24-mdp01-primitive-and-orchestrator.md](2026-04-24-mdp01-primitive-and-orchestrator.md) | 2026-04-24 | Why subprocess spawning belongs in CaseHub, not quarkus-work — and what happens when AI agents lose cross-project context |
 | [2026-04-27-mdp01-slas-signals-connectors.md](2026-04-27-mdp01-slas-signals-connectors.md) | 2026-04-27 | Business-hours SLA, notifications module, and casehub-connectors as a standalone reusable connector library |
 | [2026-04-28-mdp01-optional-reports-postgres-truth.md](2026-04-28-mdp01-optional-reports-postgres-truth.md) | 2026-04-28 | Optional SLA reporting module; how Quarkus augmentation time bites when you try to switch databases in tests |
+| [2026-04-29-mdp01-m-of-n-rule-rewriting.md](2026-04-29-mdp01-m-of-n-rule-rewriting.md) | 2026-04-29 | M-of-N parallel WorkItems; a boundary rule that was wrong; OCC exceptions Narayana won't throw where you expect; threaded inbox |
