@@ -12,7 +12,7 @@
 
 ## What Was Done — This Session
 
-### Three audit findings fixed in quarkus-work-ledger (Refs casehubio/quarkus-ledger#72)
+### Three audit findings fixed in quarkus-work-ledger (Refs casehubio/ledger#72)
 
 **a) JSON injection in `buildDecisionContext`**
 `LedgerEventCapture.buildDecisionContext()` used `String.format` to build JSON — quotes or backslashes in any field (actorId, assigneeId, etc.) silently produced malformed JSON. Replaced with Jackson `ObjectMapper` + `ObjectNode`. Jackson already on classpath via `quarkus-rest-jackson`.
@@ -40,4 +40,4 @@ Tests expected `score ≈ 1.0` for actors with no attestations. Algorithm is Bay
 - Bug fix commit: `e44842e`
 - Blog: `blog/2026-04-29-mdp03-ledger-audit-wrong-models.md`
 - Previous handover (SSE SPI decision): `git show HEAD~2:HANDOFF.md`
-- casehubio/quarkus-ledger#72 — audit issue tracking these fixes
+- casehubio/ledger#72 — audit issue tracking these fixes

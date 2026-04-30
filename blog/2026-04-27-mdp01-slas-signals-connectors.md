@@ -70,7 +70,7 @@ sends messages to Slack, Teams, Twilio SMS, and WhatsApp is genuinely reusable â
 engine will want it, Claudony will want it, and any Quarkus application could use it
 independently.
 
-We created `casehubio/casehub-connectors` as its own repository. The `Connector` SPI
+We created `casehubio/connectors` as its own repository. The `Connector` SPI
 is four lines:
 
 ```java
