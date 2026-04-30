@@ -1,4 +1,4 @@
-# Quarkus WorkItems — Claude Code Project Guide
+# CaseHub Work — Claude Code Project Guide
 
 ## Platform Context
 
