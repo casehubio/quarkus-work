@@ -6,8 +6,8 @@ import io.casehub.platform.api.preferences.Preferences;
 import io.casehub.platform.api.preferences.SettingsScope;
 import io.casehub.platform.api.routing.StrategyResolver;
 import io.casehub.work.api.AssignmentTrigger;
-import io.casehub.work.api.CompensationStatus;
 import io.casehub.work.api.ClaimSlaContext;
+import io.casehub.work.api.CompensationStatus;
 import io.casehub.work.api.DeclineTarget;
 import io.casehub.work.api.LabelPersistence;
 import io.casehub.work.api.PolicyDecision;
@@ -79,6 +79,20 @@ public class WorkItemService implements WorkItemOperations {
 
     @Inject
     PreferenceProvider preferenceProvider;
+    @Inject
+    TenantContextRunner tenantContextRunner;
+
+    @Inject
+    WorkItemOperations self;
+
+    @Override
+    public io.casehub.work.api.WorkItem createInTenantContext(String tenancyId,
+                                                              WorkItemCreateRequest request) {
+        var result = new io.casehub.work.api.WorkItem[1];
+        tenantContextRunner.runInTenantContext(tenancyId, () -> result[0] = self.create(request));
+        return result[0];
+    }
+
 
     @Inject
     public WorkItemService(final WorkItemStore workItemStore,

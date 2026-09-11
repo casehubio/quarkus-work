@@ -35,7 +35,11 @@ import java.util.concurrent.ConcurrentHashMap;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
+import static org.mockito.ArgumentMatchers.any;
+import static org.mockito.ArgumentMatchers.eq;
+import static org.mockito.Mockito.doAnswer;
 import static org.mockito.Mockito.mock;
+import static org.mockito.Mockito.verify;
 
 class WorkItemServiceTest {
 
@@ -1790,4 +1794,28 @@ class WorkItemServiceTest {
         List<AuditEntry> trail = auditStore.findByWorkItemId(original.id());
         assertThat(trail).anyMatch(e -> e.event.equals("COMPENSATION_STARTED"));
     }
+
+    @Test
+    void createInTenantContext_delegatesToTenantContextRunnerAndCreate() {
+        var tenantContextRunner = mock(TenantContextRunner.class);
+        doAnswer(inv -> {
+            inv.getArgument(1, Runnable.class).run();
+            return null;
+        }).when(tenantContextRunner).runInTenantContext(any(), any(Runnable.class));
+        service.tenantContextRunner = tenantContextRunner;
+        service.self = service;
+
+        var request = WorkItemCreateRequest.builder()
+                                           .title("Tenant-scoped item")
+                                           .tenancyId("test-tenant-ctx")
+                                           .build();
+
+        var result = service.createInTenantContext("test-tenant-ctx", request);
+
+        assertThat(result).isNotNull();
+        assertThat(result.title()).isEqualTo("Tenant-scoped item");
+        assertThat(result.tenancyId()).isEqualTo("test-tenant-ctx");
+        verify(tenantContextRunner).runInTenantContext(eq("test-tenant-ctx"), any(Runnable.class));
+    }
+
 }

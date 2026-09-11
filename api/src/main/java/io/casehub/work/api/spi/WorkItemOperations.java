@@ -14,6 +14,24 @@ public interface WorkItemOperations {
 
     WorkItem create(WorkItemCreateRequest request);
 
+    /**
+     * Create a work item within an explicitly established tenant context.
+     *
+     * <p>Activates a request scope for the given {@code tenancyId}, creates the work item,
+     * and tears down the context. Use this from async/background paths where no request
+     * scope is active (e.g., qhorus afterCompletion callbacks, inbound bridges).
+     *
+     * @param tenancyId the tenant identity to establish — must be derived from the
+     *                  authenticated security context, never from user-supplied input
+     * @param request   the work item to create
+     * @return the created work item
+     */
+    default WorkItem createInTenantContext(String tenancyId, WorkItemCreateRequest request) {
+        throw new UnsupportedOperationException(
+                "Tenant-context-aware creation not supported by this implementation");
+    }
+
+
     WorkItem claim(UUID id, String claimantId);
 
     WorkItem start(UUID id, String actorId);
