@@ -12,7 +12,7 @@ import io.casehub.work.api.WorkItemCreateRequest;
 import io.casehub.work.api.WorkItemPriority;
 import io.casehub.work.api.WorkItemRef;
 import io.casehub.work.api.WorkItemStatus;
-import io.casehub.work.api.spi.TenantContextExecutor;
+import io.casehub.work.runtime.service.TenantContextRunner;
 import io.casehub.work.api.spi.WorkItemCreator;
 import java.time.Instant;
 import java.util.List;
@@ -25,13 +25,13 @@ import org.mockito.ArgumentCaptor;
 class InboundWorkItemSchedulerImplTest {
 
   private WorkItemCreator creator;
-  private TenantContextExecutor tenantContext;
+  private TenantContextRunner tenantContext;
   private InboundWorkItemSchedulerImpl scheduler;
 
   @BeforeEach
   void setUp() {
     creator = mock(WorkItemCreator.class);
-    tenantContext = mock(TenantContextExecutor.class);
+    tenantContext = mock(TenantContextRunner.class);
     doAnswer(inv -> {
       inv.getArgument(1, Runnable.class).run();
       return null;

@@ -43,7 +43,6 @@
         <dependency>
             <groupId>io.casehub</groupId>
             <artifactId>casehub-work</artifactId>
-            <scope>test</scope>
         </dependency>
         <dependency>
             <groupId>io.casehub</groupId>
